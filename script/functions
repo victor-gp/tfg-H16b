@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# this is not a script!
+# load the commands defined here with $ source script/functions
+
+last_h16b_file() {
+   X_FILE_DIR=$1
+   X_FILE_REGEX=$2
+
+   find "$X_FILE_DIR" -type f -type f -regex "$X_FILE_REGEX" -printf '%T@\t%p\n' |
+   sort -t $'\t' -g |
+   tail -n 1 |
+   cut -d $'\t' -f 2- |
+   cat -
+}
+
+last_h16b_log() {
+   last_h16b_file "logs/" ".*.log"
+}
+
+last_h16b_json() {
+   last_h16b_file "results/" ".*.json"
+}
+
+last_h16b_png() {
+   last_h16b_file "results/" ".*.png"
+}

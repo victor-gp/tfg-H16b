@@ -1,0 +1,39 @@
+job_type: scan_heatmap
+
+logging:
+  level: Log level for the run, one between [DEBUG, INFO, WARNING, ERROR, CRITICAL].
+  file: The path where the program will log. Must be relative to logs/.
+        Optional, the default is "logs/$timestamp-$job_type.log".
+
+dynamical_system: the coefficients
+  a1: float
+  b1: float
+  c1: float
+  alpha1: float
+  beta1: float
+  a2: float
+  b2: float
+  c2: float
+  alpha2: float
+  beta2: float
+
+trajectory_integration:
+  precision: int. Precision of the integration method in units of time, expressed in exp10.
+             Example: -3 becomes 0.001 units of time.
+  limit: float. Upper limit of integration in units of time, the lower limit being 0.
+
+phase_space_scan:
+  resolution: int. Distance between two points in the same axis when scanning phase space, in exp10.
+              Example: -2 becomes 0.01.
+  min_x: float. left boundary of the phase space scan
+  max_x: float. right boundary of the phase space scan
+  min_y: float. bottom boundary of the phase space scan
+  max_y: float. top boundary of the phase space scan
+
+heatmap:
+  min_x: float. left boundary of the heatmap
+  max_x: float. right boundary of the heatmap
+  resolution_x: int. Distance between a cell and the next (horizontal) in the heatmap, in exp10.
+  min_y: float. bottom boundary of the heatmap
+  max_y: float. top boundary of the heatmap
+  resolution_y: int. Distance between a cell and the next (vertical) in the heatmap, in exp10.

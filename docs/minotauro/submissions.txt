@@ -1,0 +1,43 @@
+### test_serial.cmd
+#!/bin/bash
+# @ job_name= test_serial
+# @ initialdir= .
+# @ output= serial_%j.out
+# @ error= serial_%j.err
+# @ total_tasks= 1
+# @ wall_clock_limit = 00:01:00
+./serial_binary > serial.out
+
+
+### test_parallel.cmd
+#!/bin/bash
+# @ job_name= test_parallel
+# @ initialdir= .
+# @ output= mpi_%j.out
+# @ error= mpi_%j.err
+# @ total_tasks= 16
+# @ gpus_per_node= 4
+# @ cpus_per_task= 1
+# @ wall_clock_limit = 00:01:00
+srun ./parallel_binary > parallel.output
+
+
+then the jobs are submitted like
+$ mnsubmit test_parallel.cmd
+
+and you can query submitted (& unfinished) jobs with
+$ mnq
+
+
+other useful options:
+
+# @ partition = debug
+# @ class = debug
+
+# @SBATCH --x11=[=<0|1>] # graphical applications
+
+# @ gpus_per_node = number # [1-4] on k80 configurations.
+
+
+further reference:
+https://www.bsc.es/support/MinoTauro-ug.pdf

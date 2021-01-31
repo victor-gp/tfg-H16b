@@ -1,0 +1,32 @@
+# fun fact: the plot for this looks like the Eye of Sauron
+job_type: scan_heatmap
+logging:
+  level: DEBUG
+  file:
+dynamical_system:
+  a1: 1
+  b1: 1
+  c1: 0
+  alpha1: 0
+  beta1: 1
+  a2: -10.0
+  b2: 2.2
+  c2: 0.7
+  alpha2: -72.7778
+  beta2: 0.0015
+trajectory_integration:
+  precision: -1
+  limit: 10.0
+phase_space_scan:
+  min_x: 0.05
+  max_x: 0.15
+  min_y: 0.0
+  max_y: 0.1
+  resolution: -2
+heatmap:
+  min_x: -0.5
+  max_x: 0.5
+  resolution_x: -2
+  min_y: -2.5
+  max_y: 2.5
+  resolution_y: -1

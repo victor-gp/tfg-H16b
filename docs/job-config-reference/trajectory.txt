@@ -1,0 +1,27 @@
+job_type: compute_trajectory
+
+logging:
+  level: Log level for the run, one between [DEBUG, INFO, WARNING, ERROR, CRITICAL].
+  file: The path where the program will log. Must be relative to logs/.
+        Optional, the default is "logs/$timestamp-$job_type.log".
+
+dynamical_system: the coefficients
+  a1: float
+  b1: float
+  c1: float
+  alpha1: float
+  beta1: float
+  a2: float
+  b2: float
+  c2: float
+  alpha2: float
+  beta2: float
+
+trajectory:
+  x_0: float. x component of the initial point of the trajectory
+  y_0: float. y component of the initial point of the trajectory
+
+trajectory_integration:
+  precision: int. Precision of the integration method in units of time, expressed in exp10
+             Example: -3 becomes 0.001 units of time.
+  limit: float. Upper limit of integration in units of time, the lower limit being 0.

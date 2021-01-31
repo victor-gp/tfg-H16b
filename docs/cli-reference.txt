@@ -1,0 +1,56 @@
+
+    CLI reference
+
+usage: cli.py [-h] {compute,view} ...
+
+optional arguments:
+  -h, --help      show this help message and exit
+
+commands:
+  {compute,view}
+
+================================================================================
+
+    COMPUTE
+
+usage: cli.py compute [-h] -j JOB_CONFIG [--job-type JOB_TYPE]
+                      [-o OUTPUT_FILE] [--stdout]
+
+run a job according to the parameters declared in a configuration file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -j JOB_CONFIG, --job-config JOB_CONFIG
+                        File where the program should read the job's
+                        configuration. Must be a file present in jobs/.
+  --job-type JOB_TYPE   Overrides the job type declared in the job
+                        configuration file.
+  -o OUTPUT_FILE, --output-file OUTPUT_FILE
+                        File where the program should write the results of the
+                        job. Must be relative to results/. Default is
+                        "results/$job_type-$timestamp.json".
+  --stdout              If set, the program writes its results to standard
+                        output.
+
+================================================================================
+
+    VIEW
+
+usage: cli.py view [-h] -i INPUT_FILE [--stdin] [--json]
+
+plot the results of a compute job
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT_FILE, --input-file INPUT_FILE
+                        File where the program should read the data to be
+                        plotted. Must be a file present in results/.
+  --stdin               If set, the program reads the data to be plotted from
+                        standard input.
+  --json                If set, prints the input file in human readable format
+                        instead of plotting.
+
+If the application doesn't detect a display, such as when running inside
+Docker or when in an SSH session, the plots are saved in the same directory as
+the input file, with the same name and .png extension.
+
